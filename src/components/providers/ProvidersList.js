@@ -37,6 +37,13 @@ class PostsList extends Component {
                                 <td>{post.id}</td>
                                 <td>{post.title}</td>
                                 <td>{post.body}</td>
+                                <td>
+                                <a href={`#/posts/${post.id}`}>
+                                  <button className='btn btn-success btn-sm'>
+                                    Update
+                                  </button>
+                                </a>
+                                </td>
                             </tr>
                         ))}
                     </tbody>

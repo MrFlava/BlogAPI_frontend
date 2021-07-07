@@ -8,7 +8,7 @@ import history from '../history';
 import Header from './layout/Header';
 import DashBoard from './providers/DashBoard';
 import PrivateRoute from './common/PrivateRoute';
-
+import PostForm from './providers/ProviderForm';
 import configureStore from '../store';
 
 class App extends Component {
@@ -24,6 +24,8 @@ class App extends Component {
                     <Header />
                     <Switch>
                         <PrivateRoute exact path='/' component={DashBoard} />
+                        <Route exact path='/posts' component={PostForm} />
+                        <Route exact path='/posts/:postId' component={PostForm} />
                     </Switch>
               </Router>
             </div>
