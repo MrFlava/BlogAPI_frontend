@@ -17,7 +17,7 @@ class PostForm extends Component {
 
       this.state = {
         ...defaultState,
-        isEditing: this.props.match.path.indexOf('') >= 0,
+        isEditing: this.props.match.params.postId != undefined,
       }
 
       this.onSubmit = this.onSubmit.bind(this);

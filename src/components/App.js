@@ -25,7 +25,7 @@ class App extends Component {
                     <Switch>
                         <PrivateRoute exact path='/' component={DashBoard} />
                         <Route exact path='/posts' component={PostForm} />
-                        <Route exact path='/posts/:postId' component={PostForm} />
+                        <Route exact path='/posts/:postId/' component={PostForm} />
                     </Switch>
               </Router>
             </div>

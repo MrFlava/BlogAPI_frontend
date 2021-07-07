@@ -2,7 +2,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { getPosts } from '../../actions/providers';
+import { getPosts, deletePost } from '../../actions/providers';
 
 
 
@@ -43,6 +43,14 @@ class PostsList extends Component {
                                     Update
                                   </button>
                                 </a>
+                                <span> </span>
+                                <button
+                                onClick={this.props.deletePost.bind(
+                                  this,
+                                  post.id)}
+                                className='btn btn-danger btn-sm'>
+                                Delete
+                                </button>
                                 </td>
                             </tr>
                         ))}
@@ -58,4 +66,4 @@ const mapStateToProps = (state) => ({
     posts: state.posts.posts
 });
 
-export default connect(mapStateToProps, { getPosts })(PostsList);
+export default connect(mapStateToProps, { getPosts, deletePost })(PostsList);

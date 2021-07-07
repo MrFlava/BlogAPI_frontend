@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_POSTS_LIST, ADD_POST, GET_POST, UPDATE_POST } from '../actions/types';
+import { GET_POSTS_LIST, ADD_POST, GET_POST, UPDATE_POST, DELETE_POST } from '../actions/types';
 
 axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
 axios.defaults.xsrfCookieName = 'csrftoken';
@@ -43,4 +43,14 @@ export const editPost = (id, formValues) => (dispatch, getState) => {
       });
     }).catch(error => console.log(error));
 
+};
+
+export const deletePost = (id) => (dispatch, getState) => {
+    axios.delete(`posts/${id}`)
+        .then(result => {
+            dispatch({
+                type: DELETE_POST,
+                payload: id
+            });
+        }).catch(error => console.log(error));
 };
