@@ -9,7 +9,7 @@ import axios from 'axios';
 
 const initialState = {};
 
-axios.defaults.baseURL = 'https://desolate-basin-92919.herokuapp.com/';
+axios.defaults.baseURL = 'https://bloggy-api.herokuapp.com';
 
 const middleware = [thunk];
 

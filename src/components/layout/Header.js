@@ -1,41 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logout } from '../../actions/auth';
+
 
 class Header extends Component {
   render() {
-    const { user, isAuthenticated } = this.props.auth;
-
-    const userLinks = (
-      <li className='navbar-item'>
-        <div>
-          {user ? user.username : ''}
-
-          <div className='navbar-item'>
-            <a onClick={this.props.logout} className='nav-link'>
-              Logout
-            </a>
-          </div>
-        </div>
-      </li>
-    );
-
-    const guestLinks = (
-      <ul className="navbar-nav me-auto">
-        <li>
-        <Link to='/register' className='navbar-item nav-link'>
-          Sign Up
-        </Link>
-        </li>
-        <li>
-        <Link to='/login' className='navbar-item nav-link'>
-          Login
-        </Link>
-        </li>
-      </ul>
-
-    );
 
     return (
 
@@ -55,7 +24,6 @@ class Header extends Component {
                   <p>Home</p>
                 </Link>
               </li>
-              {isAuthenticated ? userLinks : guestLinks}
             </ul>
 
           </div>
@@ -74,6 +42,5 @@ const mapStateToProps = state => ({
 });
 
 export default connect(
-  mapStateToProps,
-  { logout }
+  mapStateToProps
 )(Header);
