@@ -99,7 +99,10 @@ class PostForm extends Component {
                         )}
                     </div>
                 </form>
+
                 {isEditing && (
+                  <div>
+                  <h2>Comments</h2>
                   <table className='table table-striped'>
                       <thead>
                           <tr>
@@ -119,6 +122,7 @@ class PostForm extends Component {
                           ))}
                       </tbody>
                   </table>
+                  </div>
                 )}
             </div>
         )

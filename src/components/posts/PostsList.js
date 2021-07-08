@@ -43,7 +43,8 @@ class PostsList extends Component {
                                     Update
                                   </button>
                                 </a>
-                                <span> </span>
+                                </td>
+                                <td>
                                 <button
                                 onClick={this.props.deletePost.bind(
                                   this,
