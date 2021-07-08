@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { addPost, getPost, editPost } from '../../actions/providers';
+import { addPost, getPost, editPost } from '../../actions/posts';
 
 const defaultState = {
     title: '',
     body: '',
+    comments: [],
     isEditing: false,
 };
 
@@ -24,16 +25,17 @@ class PostForm extends Component {
     }
 
     static propTypes = {
+        comments: PropTypes.array.isRequired,
         addPost: PropTypes.func.isRequired
     };
 
     onSubmit = (e) => {
         e.preventDefault();
 
-        const { title, body, isEditing } = this.state;
+        const { title, body, comments ,isEditing } = this.state;
 
 
-        const post = { title, body };
+        const post = { title, body,  comments };
 
         if (isEditing) {
           this.props.editPost(this.props.match.params.postId, post);
@@ -47,10 +49,11 @@ class PostForm extends Component {
 
     componentDidMount() {
       if (this.state.isEditing) {
-        this.props.getPost(this.props.match.params.postId).then(({ title, body }) => {
+        this.props.getPost(this.props.match.params.postId).then(({ title, body, comments}) => {
           this.setState({
             title,
             body,
+            comments
           })
         });
       }
@@ -59,7 +62,7 @@ class PostForm extends Component {
     onChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
     render() {
-        const { title, body, isEditing } = this.state;
+        const { title, body, comments, isEditing } = this.state;
         const postId = this.props.match.params.postId;
 
         return (
@@ -96,6 +99,27 @@ class PostForm extends Component {
                         )}
                     </div>
                 </form>
+                {isEditing && (
+                  <table className='table table-striped'>
+                      <thead>
+                          <tr>
+                              <th># ID</th>
+                              <th>Post ID</th>
+                              <th>Body</th>
+
+                          </tr>
+                      </thead>
+                      <tbody>
+                          {comments.map(comment => (
+                              <tr key={`comment-row-${comment.id}`}>
+                                  <td>{comment.id}</td>
+                                  <td>{comment.postId}</td>
+                                  <td>{comment.body}</td>
+                              </tr>
+                          ))}
+                      </tbody>
+                  </table>
+                )}
             </div>
         )
     }

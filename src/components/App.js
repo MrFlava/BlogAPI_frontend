@@ -6,9 +6,10 @@ import { PersistGate } from 'redux-persist/integration/react'
 
 import history from '../history';
 import Header from './layout/Header';
-import DashBoard from './providers/DashBoard';
+import DashBoard from './posts/DashBoard';
 import PrivateRoute from './common/PrivateRoute';
-import PostForm from './providers/ProviderForm';
+import PostForm from './posts/PostForm';
+import CommentForm from './posts/CommentForm';
 import configureStore from '../store';
 
 class App extends Component {
@@ -26,6 +27,7 @@ class App extends Component {
                         <PrivateRoute exact path='/' component={DashBoard} />
                         <Route exact path='/posts' component={PostForm} />
                         <Route exact path='/posts/:postId/' component={PostForm} />
+                        <Route exact path='/comments' component={CommentForm} />
                     </Switch>
               </Router>
             </div>

@@ -1,7 +1,8 @@
-import {  GET_POSTS_LIST, ADD_POST, GET_POST, UPDATE_POST, DELETE_POST } from '../actions/types';
+import {  GET_POSTS_LIST, ADD_POST, GET_POST, UPDATE_POST, DELETE_POST, ADD_COMMENT } from '../actions/types';
 
 const initialState = {
-    posts: []
+    posts: [],
+    comments: []
 };
 
 export default function (state = initialState, action) {
@@ -26,6 +27,11 @@ export default function (state = initialState, action) {
             return {
                   ...state,
                   [action.payload.id]: action.payload
+            };
+        case ADD_COMMENT:
+            return {
+                    ...state,
+                    comments: [...state.comments, action.payload]
             };
 
         default:

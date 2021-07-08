@@ -2,7 +2,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { getPosts, deletePost } from '../../actions/providers';
+import { getPosts, deletePost } from '../../actions/posts';
 
 
 
